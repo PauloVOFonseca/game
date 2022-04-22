@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:game/app/new_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,54 +24,84 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lightBlue,
       body: Center(
         child: Stack(
           alignment: Alignment.center,
           children: [
+            Image.asset(
+              'assets/menu_background.png',
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.fill,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
+                  const SizedBox(height: 30),
                   Container(
                     height: 80,
                     alignment: Alignment.center,
                     child: AnimatedDefaultTextStyle(
                       duration: const Duration(milliseconds: 300),
-                      style: TextStyle(fontSize: _size, color: Colors.black),
+                      style: TextStyle(
+                        fontFamily: 'Speedrush',
+                        fontSize: _size,
+                        color: Colors.black,
+                      ),
                       child: const Text(
                         'ObeGo',
                       ),
                     ),
                   ),
-                  const SizedBox(height: 50),
-                  Text(
-                    'Continuar',
-                    style: Theme.of(context).textTheme.headline4,
+                  const SizedBox(height: 30),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const NewScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Jogar',
+                      style: TextStyle(
+                        fontFamily: 'IndieFlower',
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                  Text(
-                    'Novo jogo',
-                    style: Theme.of(context).textTheme.headline4,
-                  ),
-                  Text(
+                  const Text(
                     'Como jogar',
-                    style: Theme.of(context).textTheme.headline4,
+                    style: TextStyle(
+                      fontFamily: 'IndieFlower',
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  Text(
+                  const Text(
                     'Créditos',
-                    style: Theme.of(context).textTheme.headline4,
+                    style: TextStyle(
+                      fontFamily: 'IndieFlower',
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
             ),
             const Positioned(
-              bottom: 30,
+              bottom: 40,
               right: 30,
-              child: Icon(Icons.settings, size: 30, color: Colors.grey),
+              child: Icon(Icons.settings, size: 40, color: Color(0xFF2E3035)),
             ),
             const Positioned(
               top: 30,
               right: 30,
-              child: Icon(Icons.star_outlined, size: 30, color: Colors.yellow),
+              child: Icon(Icons.star, size: 40, color: Colors.yellow),
             ),
           ],
         ),
