@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:game/app/new_screen.dart';
 import 'package:game/app/screens/credits_screen.dart';
+import 'package:game/app/screens/info_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -107,17 +108,30 @@ class _HomePageState extends State<HomePage> {
             const Positioned(
               bottom: 40,
               right: 30,
-              child: Icon(Icons.settings, size: 40, color: Color(0xFF2E3035)),
+              child: Icon(
+                Icons.music_note,
+                size: 40,
+                color: Color(0xFF2E3035),
+              ), //.music_off
             ),
             const Positioned(
               top: 30,
               right: 30,
               child: Icon(Icons.star, size: 40, color: Colors.yellow),
             ),
-            const Positioned(
+            Positioned(
               top: 30,
               right: 80,
-              child: Icon(Icons.info_outline, size: 40, color: Colors.indigo),
+              child: GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const InfoScreen(),
+                  ),
+                ),
+                child: const Icon(Icons.info_outline,
+                    size: 40, color: Colors.indigo),
+              ),
             ),
           ],
         ),
