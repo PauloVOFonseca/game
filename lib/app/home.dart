@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:game/app/new_screen.dart';
+import 'package:game/app/screens/credits_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -82,12 +83,22 @@ class _HomePageState extends State<HomePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const Text(
-                    'Créditos',
-                    style: TextStyle(
-                      fontFamily: 'IndieFlower',
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CreditsScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Créditos',
+                      style: TextStyle(
+                        fontFamily: 'IndieFlower',
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
@@ -102,6 +113,11 @@ class _HomePageState extends State<HomePage> {
               top: 30,
               right: 30,
               child: Icon(Icons.star, size: 40, color: Colors.yellow),
+            ),
+            const Positioned(
+              top: 30,
+              right: 80,
+              child: Icon(Icons.info_outline, size: 40, color: Colors.indigo),
             ),
           ],
         ),
