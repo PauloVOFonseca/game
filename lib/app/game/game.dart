@@ -1,8 +1,10 @@
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
-import 'package:flame_tiled/flame_tiled.dart';
+import 'package:game/app/game/level.dart';
 
 class SimplePlatformer extends FlameGame {
+  Level? _currentLevel;
+
   @override
   Future<void>? onLoad() async {
     await Flame.device.fullScreen();
@@ -12,12 +14,15 @@ class SimplePlatformer extends FlameGame {
     //   Vector2(640, 320),
     // );
 
-    final level = await TiledComponent.load(
-      'level1.tmx',
-      Vector2.all(32),
-    );
-    add(level);
+    loadLevel('level1.tmx');
 
     return super.onLoad();
+  }
+
+  // Swaps current level with given level
+  void loadLevel(String levelName) {
+    _currentLevel?.removeFromParent();
+    _currentLevel = Level(levelName);
+    add(_currentLevel!);
   }
 }
