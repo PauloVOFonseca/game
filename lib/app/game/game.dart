@@ -1,9 +1,12 @@
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
+import 'package:flame/image_composition.dart';
 import 'package:game/app/game/level.dart';
 
 class SimplePlatformer extends FlameGame {
   Level? _currentLevel;
+
+  late Image spriteSheet;
 
   @override
   Future<void>? onLoad() async {

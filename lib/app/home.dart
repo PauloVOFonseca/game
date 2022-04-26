@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:game/app/new_screen.dart';
 import 'package:game/app/screens/credits_screen.dart';
 import 'package:game/app/screens/info_screen.dart';
+import 'package:game/app/screens/levels/levels_screen.dart';
 import 'package:game/app/teste.dart';
 
 class HomePage extends StatefulWidget {
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const NewScreen(),
+                          builder: (context) => const LevelsScreen(),
                         ),
                       );
                     },

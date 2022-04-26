@@ -1,7 +1,8 @@
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'package:game/app/game/game.dart';
 
-class Level extends Component {
+class Level extends Component with HasGameRef<SimplePlatformer> {
   final String levelName;
 
   Level(this.levelName) : super();
