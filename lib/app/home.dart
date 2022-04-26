@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:game/app/new_screen.dart';
 import 'package:game/app/screens/credits_screen.dart';
 import 'package:game/app/screens/info_screen.dart';
+import 'package:game/app/teste.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -76,12 +77,22 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  const Text(
-                    'Como jogar',
-                    style: TextStyle(
-                      fontFamily: 'IndieFlower',
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Teste(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Como jogar',
+                      style: TextStyle(
+                        fontFamily: 'IndieFlower',
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   GestureDetector(
