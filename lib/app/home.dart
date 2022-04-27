@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:game/app/screens/credits_screen.dart';
 import 'package:game/app/screens/info_screen.dart';
 import 'package:game/app/screens/levels/levels_screen.dart';
-import 'package:game/app/teste.dart';
+import 'package:game/app/teste/teste2.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Teste(),
+                          builder: (context) => const Teste2(),
                         ),
                       );
                     },

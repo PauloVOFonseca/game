@@ -1,55 +1,98 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:game/app/teste/direction_teste.dart';
 
-class Joypad extends StatelessWidget {
-  const Joypad({Key? key}) : super(key: key);
+class Joypad extends StatefulWidget {
+  final ValueChanged<Direction>? onDirectionChanged;
+
+  const Joypad({Key? key, this.onDirectionChanged}) : super(key: key);
+
+  @override
+  JoypadState createState() => JoypadState();
+}
+
+class JoypadState extends State<Joypad> {
+  Direction direction = Direction.none;
+  Offset delta = Offset.zero;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120,
-      width: 120,
-      child: Stack(
-        children: const [
-          DirectionJoypad(
-            alignment: Alignment.topCenter,
-            icon: Icons.arrow_upward_rounded,
+      height: 80,
+      width: 80,
+      child: GestureDetector(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.circular(60),
           ),
-          DirectionJoypad(
-            alignment: Alignment.bottomCenter,
-            icon: Icons.arrow_downward_rounded,
+          child: Center(
+            child: Transform.translate(
+              offset: delta,
+              child: SizedBox(
+                height: 40,
+                width: 40,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+              ),
+            ),
           ),
-          DirectionJoypad(
-            alignment: Alignment.centerRight,
-            icon: Icons.arrow_forward_rounded,
-          ),
-          DirectionJoypad(
-            alignment: Alignment.centerLeft,
-            icon: Icons.arrow_back_rounded,
-          ),
-        ],
+        ),
+        onPanDown: onDragDown,
+        onPanUpdate: onDragUpdate,
+        onPanEnd: onDragEnd,
       ),
     );
   }
-}
 
-class DirectionJoypad extends StatelessWidget {
-  final Alignment alignment;
-  final IconData icon;
-  const DirectionJoypad({Key? key, required this.alignment, required this.icon})
-      : super(key: key);
+  void updateDelta(Offset newDelta) {
+    final newDirection = getDirectionFromOffset(newDelta);
 
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: alignment,
-      child: Container(
-        height: 40,
-        width: 40,
-        decoration: const BoxDecoration(
-          color: Colors.grey,
-          shape: BoxShape.circle,
-        ),
-        child: Icon(icon),
+    if (newDirection != direction) {
+      direction = newDirection;
+      widget.onDirectionChanged!(direction);
+    }
+
+    setState(() {
+      delta = newDelta;
+    });
+  }
+
+  Direction getDirectionFromOffset(Offset offset) {
+    if (offset.dx > 20) {
+      return Direction.right;
+    } else if (offset.dx < -20) {
+      return Direction.left;
+    } else if (offset.dy > 20) {
+      return Direction.down;
+    } else if (offset.dy < -20) {
+      return Direction.up;
+    }
+    return Direction.none;
+  }
+
+  void onDragDown(DragDownDetails d) {
+    calculateDelta(d.localPosition);
+  }
+
+  void onDragUpdate(DragUpdateDetails d) {
+    calculateDelta(d.localPosition);
+  }
+
+  void onDragEnd(DragEndDetails d) {
+    updateDelta(Offset.zero);
+  }
+
+  void calculateDelta(Offset offset) {
+    final newDelta = offset - const Offset(60, 60);
+    updateDelta(
+      Offset.fromDirection(
+        newDelta.direction,
+        min(30, newDelta.distance),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CreditsScreen extends StatefulWidget {
   const CreditsScreen({Key? key}) : super(key: key);
@@ -23,9 +24,9 @@ class _CreditsScreenState extends State<CreditsScreen> {
             ),
             Center(
               child: Column(
-                children: const [
-                  SizedBox(height: 20),
-                  Text(
+                children: [
+                  const SizedBox(height: 20),
+                  const Text(
                     'Créditos',
                     style: TextStyle(
                       fontFamily: 'IndieFlower',
@@ -33,7 +34,7 @@ class _CreditsScreenState extends State<CreditsScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'Engine: Flame',
                     style: TextStyle(
                       fontFamily: 'IndieFlower',
@@ -41,7 +42,7 @@ class _CreditsScreenState extends State<CreditsScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'Trilha sonora: Flame',
                     style: TextStyle(
                       fontFamily: 'IndieFlower',
@@ -49,7 +50,7 @@ class _CreditsScreenState extends State<CreditsScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'Efeitos sonoros: Flame',
                     style: TextStyle(
                       fontFamily: 'IndieFlower',
@@ -57,15 +58,26 @@ class _CreditsScreenState extends State<CreditsScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  Text(
-                    'Visual: Flame',
-                    style: TextStyle(
-                      fontFamily: 'IndieFlower',
-                      fontSize: 30,
-                      color: Colors.white,
+                  GestureDetector(
+                    onTap: () async {
+                      if (await canLaunchUrl(
+                          Uri.parse('https://superdark.itch.io'))) {
+                        await launchUrl(
+                          Uri.parse('https://superdark.itch.io'),
+                          mode: LaunchMode.externalApplication,
+                        );
+                      }
+                    },
+                    child: const Text(
+                      'Visual: Superdark',
+                      style: TextStyle(
+                        fontFamily: 'IndieFlower',
+                        fontSize: 30,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                  Text(
+                  const Text(
                     'Fonte textual: Pixesia Studio',
                     style: TextStyle(
                       fontFamily: 'IndieFlower',
@@ -73,7 +85,7 @@ class _CreditsScreenState extends State<CreditsScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'Editor de mapas: Tiled Map Editor',
                     style: TextStyle(
                       fontFamily: 'IndieFlower',
