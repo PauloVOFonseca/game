@@ -9,7 +9,7 @@ class Player extends SpriteAnimationComponent with HasGameRef {
         );
 
   Direction direction = Direction.none; //.none;
-  final double _playerSpeed = 300.0;
+  final double _playerSpeed = 200.0;
   final double _animationSpeed = 0.15;
   //late final SpriteAnimation _runDownAnimation;
   late final SpriteAnimation _runLeftAnimation;
