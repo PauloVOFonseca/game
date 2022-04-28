@@ -1,26 +1,26 @@
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:game/app/teste/player_teste.dart';
-import 'package:game/app/teste/world.dart';
+import 'package:game/app/teste/level.dart';
 
 class Game2 extends FlameGame with HasDraggables {
   //rayworldGame
-  late final Player _player;
-  final World _world = World();
+  Level? _currentLevel;
   late final JoystickComponent joystick;
 
   //add adiciona qualquer componente ao core do jogo
   @override
   Future<void> onLoad() async {
-    await add(_world);
     joystick = createJoystick();
-    _player = Player(joystick);
 
-    add(_player);
-    add(joystick);
-    camera.followComponent(_player,
-        worldBounds: Rect.fromLTRB(0, 0, _world.size.x, _world.size.y));
+    loadLevel('Level1.tmx');
+    return super.onLoad();
+  }
+
+  void loadLevel(String levelName) {
+    _currentLevel?.removeFromParent();
+    _currentLevel = Level(levelName, joystick);
+    add(_currentLevel!);
   }
 
   createJoystick() {
