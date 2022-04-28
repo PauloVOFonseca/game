@@ -1,8 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:game/app/teste/direction_teste.dart';
 import 'package:game/app/teste/game2.dart';
-import 'package:game/app/utils/joypad.dart';
 
 class Teste2 extends StatefulWidget {
   //maingamestate
@@ -17,21 +15,8 @@ class _Teste2State extends State<Teste2> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        GameWidget(game: game),
-        Align(
-          alignment: Alignment.bottomLeft,
-          child: Padding(
-            padding: const EdgeInsets.all(32.0),
-            child: Joypad(onDirectionChanged: onJoypadDirectionChanged),
-          ),
-        )
-      ],
+    return Scaffold(
+      body: GameWidget(game: game),
     );
-  }
-
-  void onJoypadDirectionChanged(Direction direction) {
-    game.onJoypadDirectionChanged(direction);
   }
 }
