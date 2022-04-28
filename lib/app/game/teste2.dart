@@ -1,6 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:game/app/teste/game2.dart';
+import 'package:game/app/game/game2.dart';
 
 class Teste2 extends StatefulWidget {
   //maingamestate

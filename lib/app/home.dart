@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:game/app/game/teste2.dart';
 import 'package:game/app/screens/credits_screen.dart';
 import 'package:game/app/screens/info_screen.dart';
 import 'package:game/app/screens/levels/levels_screen.dart';
-import 'package:game/app/teste/teste2.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
