@@ -1,6 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
+import 'package:game/app/game/enemy.dart';
 import 'package:game/app/game/platform.dart';
 
 class Player extends SpriteAnimationComponent
@@ -21,7 +22,7 @@ class Player extends SpriteAnimationComponent
   bool _isOnGround = false;
 
   final double _gravity = 10;
-  final double _jumpSpeed = 320;
+  final double _jumpSpeed = 280;
   final double _moveSpeed = 200;
   final double _animationSpeed = 0.15;
   final Vector2 _up = Vector2(0, -1);
@@ -47,6 +48,10 @@ class Player extends SpriteAnimationComponent
       srcSize: Vector2(27.0, 32.0),
     );
 
+    createAnimation(spriteSheet);
+  }
+
+  createAnimation(SpriteSheet spriteSheet) {
     _runLeftAnimation = spriteSheet.createAnimation(
         row: 0, stepTime: _animationSpeed, from: 4, to: 7);
     _runRightAnimation = spriteSheet.createAnimation(
@@ -125,6 +130,10 @@ class Player extends SpriteAnimationComponent
 
         position += collisionNormal.scaled(separationDistance);
       }
+    }
+
+    if (other is Enemy) {
+      print('TESTE');
     }
     super.onCollision(intersectionPoints, other);
   }

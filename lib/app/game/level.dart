@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-//import 'package:game/app/game/enemy.dart';
+import 'package:game/app/game/enemy.dart';
 import 'package:game/app/game/game2.dart';
 import 'package:game/app/game/platform.dart';
 import 'package:game/app/game/player_teste.dart';
@@ -10,7 +10,6 @@ import 'package:tiled/tiled.dart';
 class Level extends Component with HasGameRef<Game2> {
   final String levelName;
   late Player _player;
-  //late Enemy _enemy;
   late Rect _levelBounds;
   final JoystickComponent joystick;
 
@@ -60,10 +59,11 @@ class Level extends Component with HasGameRef<Game2> {
           add(_player);
           gameRef.add(joystick);
           break;
+        case 'Enemy':
+          final _enemy = Enemy(position: position, size: size * 2);
+          add(_enemy);
+          break;
       }
-
-      // _enemy = Enemy();
-      // add(_enemy);
     }
   }
 
