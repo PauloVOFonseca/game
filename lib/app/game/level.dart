@@ -54,7 +54,7 @@ class Level extends Component with HasGameRef<Game2> {
 
       switch (spawnPoint.type) {
         case 'Player':
-          _player = Player(joystick);
+          _player = Player(joystick, position, size);
           add(_player);
           gameRef.add(joystick);
           break;

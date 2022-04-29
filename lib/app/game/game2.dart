@@ -37,8 +37,8 @@ class Game2 extends FlameGame with HasCollisionDetection, HasDraggables {
   }
 
   createJoystick() {
-    final knobPaint = Paint()..color = material.Colors.white;
-    final backgroundPaint = Paint()..color = material.Colors.grey;
+    final knobPaint = Paint()..color = material.Colors.white.withOpacity(0.5);
+    final backgroundPaint = Paint()..color = material.Colors.grey.withOpacity(0.5);
     return JoystickComponent(
       knob: CircleComponent(radius: 25, paint: knobPaint),
       background: CircleComponent(radius: 50, paint: backgroundPaint),
