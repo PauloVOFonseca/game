@@ -47,7 +47,6 @@ class Player extends SpriteAnimationComponent
       srcSize: Vector2(27.0, 32.0),
     );
 
-
     _runLeftAnimation = spriteSheet.createAnimation(
         row: 0, stepTime: _animationSpeed, from: 4, to: 7);
     _runRightAnimation = spriteSheet.createAnimation(
