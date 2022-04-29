@@ -3,6 +3,7 @@ import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
 import 'package:game/game/actors/enemy.dart';
 import 'package:game/game/actors/platform.dart';
+import 'package:game/game/components/lose_game_widget.dart';
 
 class Player extends SpriteAnimationComponent
     with HasGameRef, CollisionCallbacks {
@@ -135,6 +136,8 @@ class Player extends SpriteAnimationComponent
     if (other is Enemy) {
       if (position.y < other.y) {
         other.removeFromParent();
+      }else{
+        gameRef.overlays.add(LoseGame.id);
       }
     }
     super.onCollision(intersectionPoints, other);
