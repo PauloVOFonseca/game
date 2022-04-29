@@ -3,7 +3,6 @@ import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
 import 'package:game/app/game/platform.dart';
 
-// Represents an enemy in the game world.
 class Enemy extends SpriteAnimationComponent
     with HasGameRef, CollisionCallbacks {
   Enemy({

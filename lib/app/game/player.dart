@@ -11,7 +11,7 @@ class Player extends SpriteAnimationComponent
     Vector2? position,
     Vector2? size,
   ) : super(
-          size: Vector2.all(50),
+          size: size,
           position: position,
         );
 
@@ -44,8 +44,8 @@ class Player extends SpriteAnimationComponent
 
   Future<void> _loadAnimations() async {
     final spriteSheet = SpriteSheet(
-      image: await gameRef.images.load('player_spritesheet.png'),
-      srcSize: Vector2(27.0, 32.0),
+      image: await gameRef.images.load('Player.png'),
+      srcSize: Vector2(32.0, 32.0),
     );
 
     createAnimation(spriteSheet);
@@ -53,9 +53,9 @@ class Player extends SpriteAnimationComponent
 
   createAnimation(SpriteSheet spriteSheet) {
     _runLeftAnimation = spriteSheet.createAnimation(
-        row: 0, stepTime: _animationSpeed, from: 4, to: 7);
+        row: 0, stepTime: _animationSpeed, from: 4, to: 8);
     _runRightAnimation = spriteSheet.createAnimation(
-        row: 0, stepTime: _animationSpeed, from: 0, to: 3);
+        row: 0, stepTime: _animationSpeed, from: 0, to: 4);
     _standingAnimation = spriteSheet.createAnimation(
         row: 0, stepTime: _animationSpeed, from: 0, to: 3);
     _runUpAnimation =
@@ -133,7 +133,9 @@ class Player extends SpriteAnimationComponent
     }
 
     if (other is Enemy) {
-      print('TESTE');
+      if (position.y < other.y) {
+        other.removeFromParent();
+      }
     }
     super.onCollision(intersectionPoints, other);
   }
