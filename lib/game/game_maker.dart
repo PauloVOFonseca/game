@@ -4,10 +4,10 @@ import 'package:flame/flame.dart';
 import 'package:flame/extensions.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:flutter/painting.dart';
-import 'package:game/app/game/level.dart';
+import 'package:game/screens/levels/level_maker.dart';
 
-class Game2 extends FlameGame with HasCollisionDetection, HasDraggables {
-  Level? _currentLevel;
+class GameMaker extends FlameGame with HasCollisionDetection, HasDraggables {
+  LevelMaker? _currentLevel;
 
   late Image spriteSheet;
   late final JoystickComponent joystick;
@@ -32,7 +32,7 @@ class Game2 extends FlameGame with HasCollisionDetection, HasDraggables {
 
   void loadLevel(String levelName) {
     _currentLevel?.removeFromParent();
-    _currentLevel = Level(levelName, joystick);
+    _currentLevel = LevelMaker(levelName, joystick);
     add(_currentLevel!);
   }
 

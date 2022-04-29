@@ -1,7 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
-import 'package:game/app/game/platform.dart';
+import 'package:game/game/actors/platform.dart';
 
 class Enemy extends SpriteAnimationComponent
     with HasGameRef, CollisionCallbacks {

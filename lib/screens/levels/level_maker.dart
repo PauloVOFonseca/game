@@ -1,19 +1,19 @@
 import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-import 'package:game/app/game/enemy.dart';
-import 'package:game/app/game/game2.dart';
-import 'package:game/app/game/platform.dart';
-import 'package:game/app/game/player.dart';
+import 'package:game/game/actors/enemy.dart';
+import 'package:game/game/actors/platform.dart';
+import 'package:game/game/actors/player.dart';
+import 'package:game/game/game_maker.dart';
 import 'package:tiled/tiled.dart';
 
-class Level extends Component with HasGameRef<Game2> {
+class LevelMaker extends Component with HasGameRef<GameMaker> {
   final String levelName;
   late Player _player;
   late Rect _levelBounds;
   final JoystickComponent joystick;
 
-  Level(this.levelName, this.joystick) : super();
+  LevelMaker(this.levelName, this.joystick) : super();
 
   @override
   Future<void>? onLoad() async {
