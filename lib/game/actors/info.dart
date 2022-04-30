@@ -1,7 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
-class Info extends PositionComponent with CollisionCallbacks {
+class Info extends SpriteComponent with CollisionCallbacks, HasGameRef {
   Info(
     this.infoText, {
     required Vector2 position,
@@ -21,7 +21,8 @@ class Info extends PositionComponent with CollisionCallbacks {
   final String infoText;
 
   @override
-  Future<void>? onLoad() {
+  Future<void>? onLoad() async {
+    sprite = await gameRef.loadSprite('Info.png');
     add(RectangleHitbox()..collisionType = CollisionType.passive);
     return super.onLoad();
   }
