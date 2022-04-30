@@ -146,7 +146,8 @@ class Player extends SpriteAnimationComponent
 
     if (other is Info) {
       other.removeFromParent();
-      gameRef.infoText =  other.infoText;
+      gameRef.playerScore++;
+      gameRef.infoText = other.infoText;
       gameRef.overlays.add(InfoWidget.id);
     }
     super.onCollision(intersectionPoints, other);

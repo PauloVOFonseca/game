@@ -12,6 +12,8 @@ class GameMaker extends FlameGame with HasCollisionDetection, HasDraggables {
 
   late Image spriteSheet;
   late final JoystickComponent joystick;
+  int playerScore = 0;
+  int playerEnergy = 0;
 
   @override
   Future<void>? onLoad() async {

@@ -2,13 +2,13 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:game/game/components/info_widget.dart';
 import 'package:game/game/components/lose_game_widget.dart';
+import 'package:game/game/components/player_status.dart';
 import 'package:game/game/components/win_game_widget.dart';
 import 'package:game/game/game_maker.dart';
 import 'package:game/game/components/pause_menu.dart';
 import 'package:game/game/utils/pause_widget.dart';
 
 class GameScreen extends StatefulWidget {
-  //maingamestate
   const GameScreen({Key? key}) : super(key: key);
 
   @override
@@ -29,7 +29,7 @@ class _GameScreenState extends State<GameScreen> {
     return Scaffold(
       body: GameWidget(
         game: game,
-        initialActiveOverlays: const [PauseWidget.id],
+        initialActiveOverlays: const [PauseWidget.id, PlayerStatusWidget.id],
         overlayBuilderMap: {
           PauseWidget.id: (BuildContext context, GameMaker gameRef) =>
               PauseWidget(gameRef: gameRef),
@@ -41,6 +41,8 @@ class _GameScreenState extends State<GameScreen> {
               Wingame(gameRef: gameRef),
           InfoWidget.id: (BuildContext context, GameMaker gameRef) =>
               InfoWidget(gameRef: gameRef),
+          PlayerStatusWidget.id: (BuildContext context, GameMaker gameRef) =>
+              PlayerStatusWidget(gameRef: gameRef),
         },
       ),
     );
