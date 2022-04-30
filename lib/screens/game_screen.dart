@@ -9,7 +9,8 @@ import 'package:game/game/components/pause_menu.dart';
 import 'package:game/game/utils/pause_widget.dart';
 
 class GameScreen extends StatefulWidget {
-  const GameScreen({Key? key}) : super(key: key);
+  final String levelArqName;
+  const GameScreen({Key? key, required this.levelArqName}) : super(key: key);
 
   @override
   State<GameScreen> createState() => _GameScreenState();
@@ -26,6 +27,7 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
+    game.levelArqName = widget.levelArqName;
     return Scaffold(
       body: GameWidget(
         game: game,

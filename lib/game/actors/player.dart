@@ -1,6 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
+import 'package:flutter/material.dart';
 import 'package:game/game/actors/enemy.dart';
 import 'package:game/game/actors/info.dart';
 import 'package:game/game/actors/platform.dart';
@@ -17,7 +18,10 @@ class Player extends SpriteAnimationComponent
   ) : super(
           size: size,
           position: position,
-        );
+        ){
+          debugMode = true;
+          debugColor = Colors.white;
+        }
 
   final JoystickComponent joystick;
 

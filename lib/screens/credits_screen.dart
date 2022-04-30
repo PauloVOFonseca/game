@@ -42,22 +42,22 @@ class _CreditsScreenState extends State<CreditsScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  const Text(
-                    'Trilha sonora: Flame',
-                    style: TextStyle(
-                      fontFamily: 'IndieFlower',
-                      fontSize: 30,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const Text(
-                    'Efeitos sonoros: Flame',
-                    style: TextStyle(
-                      fontFamily: 'IndieFlower',
-                      fontSize: 30,
-                      color: Colors.white,
-                    ),
-                  ),
+                  // const Text(
+                  //   'Trilha sonora: Flame',
+                  //   style: TextStyle(
+                  //     fontFamily: 'IndieFlower',
+                  //     fontSize: 30,
+                  //     color: Colors.white,
+                  //   ),
+                  // ),
+                  // const Text(
+                  //   'Efeitos sonoros: Flame',
+                  //   style: TextStyle(
+                  //     fontFamily: 'IndieFlower',
+                  //     fontSize: 30,
+                  //     color: Colors.white,
+                  //   ),
+                  // ),
                   GestureDetector(
                     onTap: () async {
                       if (await canLaunchUrl(

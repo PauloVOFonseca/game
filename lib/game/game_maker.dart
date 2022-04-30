@@ -7,6 +7,8 @@ import 'package:flutter/painting.dart';
 import 'package:game/screens/levels/level_maker.dart';
 
 class GameMaker extends FlameGame with HasCollisionDetection, HasDraggables {
+  late String levelArqName;
+
   LevelMaker? _currentLevel;
   late String infoText;
 
@@ -28,7 +30,7 @@ class GameMaker extends FlameGame with HasCollisionDetection, HasDraggables {
       Vector2(640, 330),
     );
 
-    loadLevel('TileMapTest.tmx');
+    loadLevel('$levelArqName.tmx');
 
     return super.onLoad();
   }

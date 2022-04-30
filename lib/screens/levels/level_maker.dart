@@ -1,6 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'package:game/game/actors/door.dart';
 import 'package:game/game/actors/enemy.dart';
 import 'package:game/game/actors/info.dart';
 import 'package:game/game/actors/platform.dart';
@@ -75,6 +76,17 @@ class LevelMaker extends Component with HasGameRef<GameMaker> {
         case 'Enemy':
           final _enemy = Enemy(position: position, size: size);
           add(_enemy);
+          break;
+        case 'Door':
+          final _door = Door(
+            gameRef.spriteSheet,
+            position: position,
+            size: size,
+            // onPlayerEnter: () {
+            //   gameRef.loadLevel(spawnPoint.properties.first.value);
+            // },
+          );
+          add(_door);
           break;
       }
     }
