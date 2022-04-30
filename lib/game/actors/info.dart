@@ -1,8 +1,9 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
-class Platform extends PositionComponent with CollisionCallbacks {
-  Platform({
+class Info extends PositionComponent with CollisionCallbacks {
+  Info(
+    this.infoText, {
     required Vector2 position,
     required Vector2 size,
     Vector2? scale,
@@ -16,6 +17,8 @@ class Platform extends PositionComponent with CollisionCallbacks {
           angle: angle,
           anchor: anchor,
         );
+
+  final String infoText;
 
   @override
   Future<void>? onLoad() {

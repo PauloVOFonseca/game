@@ -2,6 +2,7 @@ import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:game/game/actors/enemy.dart';
+import 'package:game/game/actors/info.dart';
 import 'package:game/game/actors/platform.dart';
 import 'package:game/game/actors/player.dart';
 import 'package:game/game/game_maker.dart';
@@ -45,6 +46,18 @@ class LevelMaker extends Component with HasGameRef<GameMaker> {
         size: Vector2(platformObject.width, platformObject.height),
       );
       add(platform);
+    }
+
+    final infoLayer = tileMap.getLayer<ObjectGroup>('Info');
+
+    for (final infoObject in infoLayer!.objects) {
+      final info = Info(
+        "AOOOOOOOOO",
+        //TODO alterar isso
+        position: Vector2(infoObject.x, infoObject.y),
+        size: Vector2(infoObject.width, infoObject.height),
+      );
+      add(info);
     }
 
     final spawnPointsLayer = tileMap.getLayer<ObjectGroup>('SpawnPoints');

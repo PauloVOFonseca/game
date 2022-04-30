@@ -8,6 +8,7 @@ import 'package:game/screens/levels/level_maker.dart';
 
 class GameMaker extends FlameGame with HasCollisionDetection, HasDraggables {
   LevelMaker? _currentLevel;
+  late String infoText;
 
   late Image spriteSheet;
   late final JoystickComponent joystick;
@@ -19,13 +20,13 @@ class GameMaker extends FlameGame with HasCollisionDetection, HasDraggables {
 
     joystick = createJoystick();
 
-    spriteSheet = await images.load('Spritesheet.png');
+    spriteSheet = await images.load('tileset.png');
 
     camera.viewport = FixedResolutionViewport(
       Vector2(640, 330),
     );
 
-    loadLevel('HowToPlay.tmx');
+    loadLevel('TileMapTest.tmx');
 
     return super.onLoad();
   }

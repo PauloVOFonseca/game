@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:game/game/game_maker.dart';
 import 'package:game/game/utils/pause_widget.dart';
 
-class LoseGame extends StatelessWidget {
-  static const String id = 'LoseGame';
+class Wingame extends StatelessWidget {
+  static const String id = 'WinGame';
   final GameMaker gameRef;
-  const LoseGame({Key? key, required this.gameRef}) : super(key: key);
+  const Wingame({Key? key, required this.gameRef}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class LoseGame extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'Você perdeu!',
+            'Você venceu!',
             style: TextStyle(
               fontFamily: 'Speedrush',
               fontSize: 50,
@@ -25,18 +25,9 @@ class LoseGame extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          const Text(
-            'Tente novamente!',
-            style: TextStyle(
-              fontFamily: 'Speedrush',
-              fontSize: 20,
-              color: Colors.black,
-            ),
-          ),
-          const SizedBox(height: 10),
           GestureDetector(
             onTap: () {
-              gameRef.overlays.remove(LoseGame.id);
+              gameRef.overlays.remove(Wingame.id);
               Navigator.of(context).pop();
             },
             child: Container(

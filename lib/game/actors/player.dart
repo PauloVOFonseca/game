@@ -2,11 +2,14 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
 import 'package:game/game/actors/enemy.dart';
+import 'package:game/game/actors/info.dart';
 import 'package:game/game/actors/platform.dart';
+import 'package:game/game/components/info_widget.dart';
 import 'package:game/game/components/lose_game_widget.dart';
+import 'package:game/game/game_maker.dart';
 
 class Player extends SpriteAnimationComponent
-    with HasGameRef, CollisionCallbacks {
+    with HasGameRef<GameMaker>, CollisionCallbacks {
   Player(
     this.joystick,
     Vector2? position,
@@ -136,9 +139,15 @@ class Player extends SpriteAnimationComponent
     if (other is Enemy) {
       if (position.y < other.y) {
         other.removeFromParent();
-      }else{
+      } else {
         gameRef.overlays.add(LoseGame.id);
       }
+    }
+
+    if (other is Info) {
+      other.removeFromParent();
+      gameRef.infoText =  other.infoText;
+      gameRef.overlays.add(InfoWidget.id);
     }
     super.onCollision(intersectionPoints, other);
   }
