@@ -7,6 +7,7 @@ import 'package:game/game/actors/info.dart';
 import 'package:game/game/actors/platform.dart';
 import 'package:game/game/actors/player.dart';
 import 'package:game/game/game_maker.dart';
+import 'package:game/game/shared/dialogs.dart';
 import 'package:tiled/tiled.dart';
 
 class LevelMaker extends Component with HasGameRef<GameMaker> {
@@ -14,6 +15,7 @@ class LevelMaker extends Component with HasGameRef<GameMaker> {
   late Player _player;
   late Rect _levelBounds;
   final JoystickComponent joystick;
+  Dialogs dialogs = Dialogs();
 
   LevelMaker(this.levelName, this.joystick) : super();
 
@@ -53,8 +55,7 @@ class LevelMaker extends Component with HasGameRef<GameMaker> {
 
     for (final infoObject in infoLayer!.objects) {
       final info = Info(
-        "AOOOOOOOOO",
-        //TODO alterar isso
+        getInfo(infoObject.type),
         position: Vector2(infoObject.x, infoObject.y),
         size: Vector2(infoObject.width, infoObject.height),
       );
@@ -95,5 +96,9 @@ class LevelMaker extends Component with HasGameRef<GameMaker> {
   void _setupCamera() {
     gameRef.camera.followComponent(_player);
     gameRef.camera.worldBounds = _levelBounds;
+  }
+
+  String getInfo(String infoType) {
+    return dialogs.howToPlay[infoType];
   }
 }

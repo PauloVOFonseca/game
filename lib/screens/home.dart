@@ -4,6 +4,7 @@ import 'package:game/screens/game_screen.dart';
 import 'package:game/screens/credits_screen.dart';
 import 'package:game/screens/info_screen.dart';
 import 'package:game/screens/levels/levels_screen.dart';
+import 'package:game/screens/trophies_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -127,10 +128,18 @@ class _HomePageState extends State<HomePage> {
                 color: Color(0xFF2E3035),
               ), //.music_off
             ),
-            const Positioned(
+            Positioned(
               top: 30,
               right: 30,
-              child: Icon(Icons.star, size: 40, color: Colors.yellow),
+              child: GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const InfoScreen(),
+                  ),
+                ),
+                child: const Icon(Icons.star, size: 40, color: Colors.yellow),
+              ),
             ),
             Positioned(
               top: 30,
@@ -139,11 +148,14 @@ class _HomePageState extends State<HomePage> {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const InfoScreen(),
+                    builder: (context) => const TrophiesScreen(),
                   ),
                 ),
-                child: const Icon(Icons.info_outline,
-                    size: 40, color: Colors.indigo),
+                child: const Icon(
+                  Icons.info_outline,
+                  size: 40,
+                  color: Colors.indigo,
+                ),
               ),
             ),
           ],

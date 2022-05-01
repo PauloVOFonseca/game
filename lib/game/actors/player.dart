@@ -1,7 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
-import 'package:flutter/material.dart';
 import 'package:game/game/actors/enemy.dart';
 import 'package:game/game/actors/info.dart';
 import 'package:game/game/actors/platform.dart';
@@ -18,10 +17,7 @@ class Player extends SpriteAnimationComponent
   ) : super(
           size: size,
           position: position,
-        ){
-          debugMode = true;
-          debugColor = Colors.white;
-        }
+        );
 
   final JoystickComponent joystick;
 
@@ -141,7 +137,7 @@ class Player extends SpriteAnimationComponent
     }
 
     if (other is Enemy) {
-      if (position.y < other.y) {
+      if (position.y + 25 < other.y) {
         other.removeFromParent();
       } else {
         gameRef.overlays.add(LoseGame.id);
