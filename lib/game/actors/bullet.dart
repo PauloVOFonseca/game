@@ -1,18 +1,25 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:game/game/actors/player.dart';
+import 'package:game/game/components/lose_game_widget.dart';
 
-class Bullet extends SpriteComponent {
+class Bullet extends SpriteComponent with CollisionCallbacks, HasGameRef {
   Bullet({
-    Sprite? sprite,
     Vector2? position,
     Vector2? size,
-  }
-  ) : super(
-          sprite: sprite,
+  }) : super(
           size: size,
           position: position,
         );
 
-  final double _speed = 450;
+  final double _speed = 250;
+
+  @override
+  Future<void>? onLoad() async {
+    sprite = await gameRef.loadSprite('bullet.png');
+    add(RectangleHitbox()..collisionType = CollisionType.passive);
+    return super.onLoad();
+  }
 
   @override
   void update(double dt) {
@@ -20,8 +27,17 @@ class Bullet extends SpriteComponent {
 
     position += Vector2(0, -1) * _speed * dt;
 
-    // if (this.position.y < 0 ){
-    //   remove();
-    // }
+    if (position.y < 0) {
+      removeFromParent();
+    }
+  }
+
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    if (other is Player) {
+      gameRef.overlays.add(LoseGame.id);
+    }
+
+    super.onCollision(intersectionPoints, other);
   }
 }

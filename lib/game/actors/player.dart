@@ -1,6 +1,8 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
+import 'package:flutter/material.dart';
+import 'package:game/game/actors/boss.dart';
 import 'package:game/game/actors/enemy.dart';
 import 'package:game/game/actors/info.dart';
 import 'package:game/game/actors/platform.dart';
@@ -139,6 +141,14 @@ class Player extends SpriteAnimationComponent
     if (other is Enemy) {
       if (position.y + 25 < other.y) {
         other.removeFromParent();
+      } else {
+        //gameRef.overlays.add(LoseGame.id);
+      }
+    }
+
+    if (other is Boss) {
+      if (position.y + 25 < other.y) {
+        other.reduceLife();
       } else {
         gameRef.overlays.add(LoseGame.id);
       }

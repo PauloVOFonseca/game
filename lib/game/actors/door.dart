@@ -4,11 +4,11 @@ import 'package:flame/image_composition.dart';
 import 'package:game/game/actors/player.dart';
 
 class Door extends SpriteComponent with CollisionCallbacks {
-  //Function? onPlayerEnter;
+  Function? onPlayerEnter;
 
   Door(
     Image image, {
-    //this.onPlayerEnter,
+    this.onPlayerEnter,
     Vector2? position,
     Vector2? size,
     Vector2? scale,
@@ -37,7 +37,7 @@ class Door extends SpriteComponent with CollisionCallbacks {
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
     if (other is Player) {
-      print('TESTEEE');
+      onPlayerEnter?.call();
     }
     super.onCollisionStart(intersectionPoints, other);
   }
