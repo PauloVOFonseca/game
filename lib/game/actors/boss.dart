@@ -1,7 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
-import 'package:flutter/material.dart';
 import 'package:game/game/actors/bullet.dart';
 import 'package:game/game/actors/platform.dart';
 import 'package:game/game/components/win_game_widget.dart';
@@ -9,7 +8,6 @@ import 'package:game/game/game_maker.dart';
 
 class Boss extends SpriteAnimationComponent
     with HasGameRef<GameMaker>, CollisionCallbacks {
-  late Timer timer;
   Boss({
     Vector2? position,
     Vector2? size,
@@ -28,6 +26,7 @@ class Boss extends SpriteAnimationComponent
     timer = Timer(5, onTick: handleMovement, repeat: true);
   }
 
+  late Timer timer;
   bool _isOnGround = false;
 
   final double _gravity = 10;
@@ -42,7 +41,7 @@ class Boss extends SpriteAnimationComponent
   late final SpriteAnimation _standingAnimation;
   final double _animationSpeed = 0.15;
 
-  bool followPlayer = false;
+  bool dontMove = false;
 
   @override
   void onMount() {
@@ -83,7 +82,7 @@ class Boss extends SpriteAnimationComponent
       position += _velocity * dt;
     }
 
-    if (followPlayer) {
+    if (!dontMove) {
       if (countMoves == 90) {
         _horizontalMovement = -1;
         countMoves--;
@@ -97,18 +96,14 @@ class Boss extends SpriteAnimationComponent
         position += Vector2(_horizontalMovement.toDouble(), 0) * _moveSpeed;
       }
     }
-    else{
-
-    }
   }
 
- void handleMovement(){
-   followPlayer = !followPlayer;
-   shotBullet();
+  void handleMovement() {
+    dontMove = !dontMove;
+    shotBullet();
   }
 
   void shotBullet() {
-    
     Bullet bullet = Bullet(position: position, size: Vector2(32, 32));
     bullet.anchor = Anchor.center;
     gameRef.add(bullet);

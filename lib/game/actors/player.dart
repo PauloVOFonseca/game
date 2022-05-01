@@ -1,7 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
-import 'package:flutter/material.dart';
 import 'package:game/game/actors/boss.dart';
 import 'package:game/game/actors/enemy.dart';
 import 'package:game/game/actors/info.dart';
