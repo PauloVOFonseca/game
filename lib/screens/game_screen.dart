@@ -32,6 +32,15 @@ class _GameScreenState extends State<GameScreen> {
       body: GameWidget(
         game: game,
         initialActiveOverlays: const [PauseWidget.id, PlayerStatusWidget.id],
+        loadingBuilder: (context) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+        errorBuilder: (context, ex) {
+          return const Center(
+            child: Text(
+                'Infelizmente não conseguimos carregar o jogo, tente novamente.'),
+          );
+        },
         overlayBuilderMap: {
           PauseWidget.id: (BuildContext context, GameMaker gameRef) =>
               PauseWidget(gameRef: gameRef),
