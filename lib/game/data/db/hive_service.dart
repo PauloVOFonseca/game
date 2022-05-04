@@ -7,9 +7,9 @@ class HiveService {
     return open;
   }
 
-  Future saveLevel(GameModel gameSave) => Hive.box("levels").put("save", gameSave);
+  Future saveLevel(String keyName, GameModel gameSave) => Hive.box("levels").put(keyName, gameSave);
 
-  GameModel get getGameSaved => Hive.box("levels").get("save") as GameModel;
+  GameModel getGameSaved(String keyName) => Hive.box("levels").get(keyName) as GameModel;
 
   Future clearDatabase() async => await Hive.deleteFromDisk();
 }
