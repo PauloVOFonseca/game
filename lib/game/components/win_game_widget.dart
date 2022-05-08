@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:game/game/data/db/hive_service.dart';
 import 'package:game/game/game_maker.dart';
 import 'package:game/game/utils/pause_widget.dart';
 
 class Wingame extends StatelessWidget {
   static const String id = 'WinGame';
   final GameMaker gameRef;
-  const Wingame({Key? key, required this.gameRef}) : super(key: key);
+  final HiveService hiveService = HiveService();
+  Wingame({Key? key, required this.gameRef}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class Wingame extends StatelessWidget {
             onTap: () {
               gameRef.overlays.remove(Wingame.id);
               Navigator.of(context).pop();
+              hiveService.handleSaveLevel();
             },
             child: Container(
               width: 150,

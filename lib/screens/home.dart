@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const InfoScreen(),
+                    builder: (context) => TrophiesScreen(),
                   ),
                 ),
                 child: const Icon(Icons.star, size: 40, color: Colors.yellow),
@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TrophiesScreen(),
+                    builder: (context) => const InfoScreen(),
                   ),
                 ),
                 child: const Icon(
