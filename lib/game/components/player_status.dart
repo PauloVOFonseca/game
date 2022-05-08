@@ -18,14 +18,6 @@ class PlayerStatusWidget extends StatelessWidget {
             style: const TextStyle(color: Colors.white, fontSize: 15),
           ),
         ),
-        Positioned(
-          top: 35,
-          right: 40,
-          child: Text(
-            "Energia: ${gameRef.playerEnergy}",
-            style: const TextStyle(color: Colors.white, fontSize: 15),
-          ),
-        ),
       ],
     );
   }

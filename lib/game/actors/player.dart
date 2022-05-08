@@ -141,7 +141,7 @@ class Player extends SpriteAnimationComponent
       if (position.y + 25 < other.y) {
         other.removeFromParent();
       } else {
-        //gameRef.overlays.add(LoseGame.id);
+        gameRef.overlays.add(LoseGame.id);
       }
     }
 
@@ -156,7 +156,7 @@ class Player extends SpriteAnimationComponent
     if (other is Info) {
       other.removeFromParent();
       gameRef.playerScore++;
-      gameRef.infoText = other.infoText;
+      gameRef.newInfoTextDetect(other.infoText);
       gameRef.overlays.add(InfoWidget.id);
     }
     super.onCollision(intersectionPoints, other);

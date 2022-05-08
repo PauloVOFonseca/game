@@ -11,11 +11,11 @@ class GameMaker extends FlameGame with HasCollisionDetection, HasDraggables {
 
   LevelMaker? _currentLevel;
   late String infoText;
+  List<String> dialogsColleted = [];
 
   late Image spriteSheet;
   late final JoystickComponent joystick;
   int playerScore = 0;
-  int playerEnergy = 0;
 
   @override
   Future<void>? onLoad() async {
@@ -50,5 +50,10 @@ class GameMaker extends FlameGame with HasCollisionDetection, HasDraggables {
       background: CircleComponent(radius: 50, paint: backgroundPaint),
       margin: const EdgeInsets.only(left: 10, bottom: 10),
     );
+  }
+
+  void newInfoTextDetect(String infoText) {
+    this.infoText = infoText;
+    dialogsColleted.add(infoText);
   }
 }

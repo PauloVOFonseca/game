@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:game/game/game_maker.dart';
+import 'package:game/game/shared/dialogs.dart';
 import 'package:game/game/utils/pause_widget.dart';
 
 class InfoWidget extends StatelessWidget {
   static const String id = 'Info';
   final GameMaker gameRef;
-  const InfoWidget({Key? key, required this.gameRef}) : super(key: key);
+  final Dialogs dialogs = Dialogs();
+  InfoWidget({Key? key, required this.gameRef}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +54,15 @@ class InfoWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Center(child: Text(gameRef.infoText)),
+              Center(child: Text(getInfo(gameRef.infoText))),
             ],
           ),
         ),
       ),
     );
+  }
+
+  String getInfo(String infoType) {
+    return dialogs.dialogs[infoType];
   }
 }
