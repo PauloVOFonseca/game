@@ -9,6 +9,14 @@ class TrophiesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final teste = hiveService.getGameKeys();
+    print('teste: $teste');
+
+    for (final aa in teste) {
+      final teste2 = hiveService.getGameSaved(aa);
+      print(teste2.levels.values.first.collectedInformations);
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xFF50abe7),
       body: Stack(

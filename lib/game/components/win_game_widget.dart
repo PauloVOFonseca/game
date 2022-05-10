@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game/game/data/db/hive_service.dart';
 import 'package:game/game/game_maker.dart';
-import 'package:game/game/utils/pause_widget.dart';
 
 class Wingame extends StatelessWidget {
   static const String id = 'WinGame';
@@ -12,7 +11,6 @@ class Wingame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     gameRef.pauseEngine();
-    gameRef.overlays.remove(PauseWidget.id);
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -28,10 +26,10 @@ class Wingame extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           GestureDetector(
-            onTap: () {
+            onTap: () async {
               gameRef.overlays.remove(Wingame.id);
               Navigator.of(context).pop();
-              hiveService.handleSaveLevel();
+              await hiveService.handleSaveLevel(gameRef.levelArqName, gameRef.dialogsColleted);
             },
             child: Container(
               width: 150,

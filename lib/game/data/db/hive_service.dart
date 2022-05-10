@@ -1,4 +1,5 @@
 import 'package:game/game/data/models/game_model.dart';
+import 'package:game/game/data/models/level_model.dart';
 import 'package:hive/hive.dart';
 
 class HiveService {
@@ -7,30 +8,25 @@ class HiveService {
     return open;
   }
 
-  handleSaveLevel() {
-    print('AQUI');
+  handleSaveLevel(String levelName, List<String> colleted) async {
+    final oldGame = getGameSaved(levelName);
+    if (oldGame == null ||
+        oldGame.levels.values.first.collectedInformations.length <
+            colleted.length) {
+      LevelModel levelModel = LevelModel(
+          playerScore: colleted.length, collectedInformations: colleted);
+      GameModel gameModel = GameModel(levels: {levelName: levelModel});
+      await saveLevel(levelName, gameModel);
+    }
   }
-
-// HiveService hiveService = HiveService();
-
-////Isso salva
-// LevelModel levelModel = LevelModel(
-//     playerScore: 2, collectedInformations: ['teste']);
-// GameModel gameModel =
-//     GameModel(levels: {'teste2': levelModel});
-// await hiveService.saveLevel('teste2', gameModel);
-
-//Isso pega
-//final teste = hiveService.getGameSaved('teste');
-//print('${teste.levels['teste2']?.playerScore}');
 
   Future saveLevel(String keyName, GameModel gameSave) =>
       Hive.box("levels").put(keyName, gameSave);
 
-  GameModel getGameSaved(String keyName) =>
-      Hive.box("levels").get(keyName) as GameModel;
+  getGameSaved(String keyName) =>
+      Hive.box("levels").get(keyName, defaultValue: null);
 
-  //getGameSaved2() => Hive.box("levels").keys;
+  getGameKeys() => Hive.box("levels").keys;
 
   Future clearDatabase() async => await Hive.deleteFromDisk();
 }

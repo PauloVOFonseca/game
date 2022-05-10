@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:game/game/game_maker.dart';
-import 'package:game/game/utils/pause_widget.dart';
 
 class LoseGame extends StatelessWidget {
   static const String id = 'LoseGame';
@@ -10,7 +9,6 @@ class LoseGame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     gameRef.pauseEngine();
-    gameRef.overlays.remove(PauseWidget.id);
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
