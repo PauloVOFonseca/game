@@ -5,52 +5,68 @@ import 'package:game/game/shared/dialogs.dart';
 class TrophiesScreen extends StatelessWidget {
   final Dialogs dialogs = Dialogs();
   final HiveService hiveService = HiveService();
+
   TrophiesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final teste = hiveService.getGameKeys();
-    print('teste: $teste');
+    List<String> allInformationsKey = [];
+    final gameKeys = hiveService.getGameKeys();
+    print('teste: $gameKeys');
 
-    for (final aa in teste) {
-      final teste2 = hiveService.getGameSaved(aa);
-      print(teste2.levels.values.first.collectedInformations);
+    for (final key in gameKeys) {
+      final colletedInformations = hiveService.getGameSaved(key);
+      allInformationsKey = [
+        ...colletedInformations.levels.values.first.collectedInformations
+      ];
     }
 
     return Scaffold(
       backgroundColor: const Color(0xFF50abe7),
       body: Stack(
         children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                const SizedBox(height: 20),
-                const Text(
-                  'Coletados',
-                  style: TextStyle(
-                    fontFamily: 'IndieFlower',
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                  ),
+          Column(
+            children: [
+              const SizedBox(height: 20),
+              const Text(
+                'Coletados',
+                style: TextStyle(
+                  fontFamily: 'IndieFlower',
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
                 ),
-                const Text(
-                  'Aqui são exibidos os textos informativos que foram coletados durante o jogo.',
-                  style: TextStyle(
-                    fontFamily: 'IndieFlower',
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
+              ),
+              const Text(
+                'Aqui são exibidos os textos informativos que foram coletados durante o jogo. Jogue para desbloquear.',
+                style: TextStyle(
+                  fontFamily: 'IndieFlower',
+                  fontSize: 20,
+                  color: Colors.white,
                 ),
-                ListView.builder(
+                textAlign: TextAlign.center,
+              ),
+              Expanded(
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemCount: dialogs.dialogs.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return buildInfoWidget(
-                        dialogs.dialogs.values.elementAt(index));
+                    final bool canShow;
+                    if (allInformationsKey
+                        .contains(dialogs.dialogs.keys.elementAt(index))) {
+                      canShow = true;
+                    } else {
+                      canShow = false;
+                    }
+                    if (index > 4) {
+                      return buildInfoWidget(
+                          dialogs.dialogs.values.elementAt(index), canShow);
+                    }
+                    return Container();
                   },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           Positioned(
             top: 30,
@@ -69,18 +85,30 @@ class TrophiesScreen extends StatelessWidget {
     );
   }
 
-  Widget buildInfoWidget(dynamic info) {
+  Widget buildInfoWidget(dynamic info, bool canShow) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 2),
       child: Container(
+        padding: const EdgeInsets.only(top: 5, bottom: 5),
         margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        child: Text(
-          info,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.teal,
-            fontSize: 16,
-          ),
+        child: Stack(
+          children: [
+            Text(
+              info,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: canShow ? Colors.teal : Colors.teal.withOpacity(0.1),
+                fontSize: 16,
+              ),
+            ),
+            if (canShow == false)
+              const Center(
+                child: Icon(
+                  Icons.lock,
+                  color: Colors.teal,
+                ),
+              ),
+          ],
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),

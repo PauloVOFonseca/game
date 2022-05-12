@@ -60,21 +60,12 @@ class LevelsScreen extends StatelessWidget {
       child: Container(
         height: 120,
         width: 120,
-        child: Stack(
-          children: [
-            Center(
-              child: Text(
-                number.toString(),
-                style: const TextStyle(
-                    color: Colors.teal, fontSize: 40, fontFamily: 'Speedrush'),
-              ),
-            ),
-            if (number != 1)
-              const Icon(
-                Icons.lock,
-                color: Colors.teal,
-              ),
-          ],
+        child: Center(
+          child: Text(
+            number.toString(),
+            style: const TextStyle(
+                color: Colors.teal, fontSize: 40, fontFamily: 'Speedrush'),
+          ),
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
