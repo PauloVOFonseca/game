@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:game/screens/game_screen.dart';
 
 class LevelsScreen extends StatelessWidget {
-  const LevelsScreen({Key? key}) : super(key: key);
+  final List levels = [1, 2, 3];
+  LevelsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,16 @@ class LevelsScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 50),
-              levelRowList(),
+              Expanded(
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: levels.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return buildLevelWidget(context, index + 1);
+                  },
+                ),
+              ),
             ],
           ),
           Positioned(
@@ -42,35 +53,35 @@ class LevelsScreen extends StatelessWidget {
     );
   }
 
-  Widget levelRowList() {
-    List levels = [1, 2, 3, 4, 5, 6, 7, 8];
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          ...levels.map(buildLevelWidget).toList(),
-        ],
-      ),
-    );
-  }
-
-  buildLevelWidget(dynamic number) {
+  Widget buildLevelWidget(BuildContext context, dynamic number) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 120,
-        width: 120,
-        child: Center(
-          child: Text(
-            number.toString(),
-            style: const TextStyle(
-                color: Colors.teal, fontSize: 40, fontFamily: 'Speedrush'),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => GameScreen(
+                levelArqName: 'Level$number',
+              ),
+            ),
+          );
+        },
+        child: Container(
+          height: 120,
+          width: 120,
+          child: Center(
+            child: Text(
+              number.toString(),
+              style: const TextStyle(
+                  color: Colors.teal, fontSize: 40, fontFamily: 'Speedrush'),
+            ),
           ),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.black,
-          border: Border.all(color: const Color(0xFFFFD700), width: 7),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.black,
+            border: Border.all(color: const Color(0xFFFFD700), width: 7),
+          ),
         ),
       ),
     );
