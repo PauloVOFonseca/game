@@ -18,7 +18,7 @@ class Bullet extends SpriteComponent with CollisionCallbacks, HasGameRef {
   @override
   Future<void>? onLoad() async {
     sprite = await gameRef.loadSprite('bullet.png');
-    add(RectangleHitbox()..collisionType = CollisionType.passive);
+    add(RectangleHitbox()..collisionType = CollisionType.active);
     return super.onLoad();
   }
 
