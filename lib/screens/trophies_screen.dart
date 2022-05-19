@@ -12,13 +12,11 @@ class TrophiesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> allInformationsKey = [];
     final gameKeys = hiveService.getGameKeys();
-    print('teste: $gameKeys');
 
     for (final key in gameKeys) {
       final colletedInformations = hiveService.getGameSaved(key);
-      allInformationsKey = [
-        ...colletedInformations.levels.values.first.collectedInformations
-      ];
+      allInformationsKey.addAll(
+          colletedInformations.levels.values.first.collectedInformations);
     }
 
     return Scaffold(

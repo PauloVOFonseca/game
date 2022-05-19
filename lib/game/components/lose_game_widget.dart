@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:game/game/data/db/hive_service.dart';
 import 'package:game/game/game_maker.dart';
 
 class LoseGame extends StatelessWidget {
   static const String id = 'LoseGame';
   final GameMaker gameRef;
-  const LoseGame({Key? key, required this.gameRef}) : super(key: key);
+  final HiveService hiveService = HiveService();
+  LoseGame({Key? key, required this.gameRef}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +35,11 @@ class LoseGame extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           GestureDetector(
-            onTap: () {
+            onTap: () async {
               gameRef.overlays.remove(LoseGame.id);
               Navigator.of(context).pop();
+              await hiveService.handleSaveLevel(
+                  gameRef.levelArqName, gameRef.dialogsColleted);
             },
             child: Container(
               width: 150,
