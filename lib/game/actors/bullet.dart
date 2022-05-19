@@ -1,5 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:game/game/actors/platform.dart';
 import 'package:game/game/actors/player.dart';
 import 'package:game/game/components/lose_game_widget.dart';
 
@@ -36,6 +37,9 @@ class Bullet extends SpriteComponent with CollisionCallbacks, HasGameRef {
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     if (other is Player) {
       gameRef.overlays.add(LoseGame.id);
+    }
+    if (other is Platform) {
+      removeFromParent();
     }
 
     super.onCollision(intersectionPoints, other);

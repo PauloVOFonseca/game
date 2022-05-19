@@ -11,7 +11,7 @@ class Dialogs {
         "Para completar a fase, você precisa derrotar o chefão do estágio, pule sobre ele para finaliza-lo.",
     //Fase 1:
     "firstTip":
-        "Ainda bem que você chegou! Precisamos da sua ajuda. Colete as informações disponíveis e combata os inimigos para conseguir nos ajudar.",
+        "Ainda bem que você chegou! Precisamos da sua ajuda. Nós estamos no sistema cardiovascular, um dos afetados pela obesidade. Quer saber mais? Colete as informações disponíveis e combata os inimigos para conseguir nos ajudar.",
     "definition":
         "A obesidade é uma doença crônica, definida pela Organização Mundial de Saúde (OMS) como o acúmulo excessivo de gordura no corpo.",
     "imc":
@@ -37,6 +37,8 @@ class Dialogs {
     "vitamins":
         "Vitaminas: Atuam nos processos metabólicos de carboidratos, lipídios e proteínas.",
     //Fase 2
+    "secondTip":
+        "Nós estamos no sistema respiratório, também bastante afetado pela obesidade. Colete mais informações disponíveis e aprenda sobre o combate a obesidade",
     "metabolicSyndrome":
         "A síndrome metabólica é um conjunto de fatores de riscos manisfestados num indivíduo e está associada a obesidade, identificada pela grande quantidade de gordura abdominal, elevação da taxa de triglicerídeos e glicose, além da pressão alta.",
     "whatAffects":
@@ -52,6 +54,8 @@ class Dialogs {
     "diet":
         "Cada dieta deve ser adaptada para o estilo de vida pessoal, sob supervisão de um profissional especializado.",
     //Fase 3
+    "thirdTip":
+        "Nós estamos no sistema esquelético. Estamos quase acabando nossas operações.",
     "adultsIBGE":
         "Em 2020, foi anunciado pelo IBGE que 1 em cada 4 adultos estão obesos(cerca de 25% da população).",
     "childrenIBGE":
