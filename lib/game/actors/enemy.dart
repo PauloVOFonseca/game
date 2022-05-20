@@ -30,25 +30,29 @@ class Enemy extends SpriteAnimationComponent
   final Vector2 _velocity = Vector2.zero();
   final Vector2 _up = Vector2(0, -1);
 
+  late SpriteSheet spriteSheet;
   late final SpriteAnimation _runLeftAnimation;
   late final SpriteAnimation _runRightAnimation;
   late final SpriteAnimation _standingAnimation;
   final double _animationSpeed = 0.15;
 
   @override
-  Future<void>? onLoad() {
-    _loadAnimations().then((_) => {animation = _standingAnimation});
+  Future<void>? onLoad() async {
+    await _loadAnimations()
+        .then((_) => {createAnimation(), animation = _standingAnimation});
     add(CircleHitbox());
 
     return super.onLoad();
   }
 
   Future<void> _loadAnimations() async {
-    final spriteSheet = SpriteSheet(
+    spriteSheet = SpriteSheet(
       image: await gameRef.images.load('Enemy1.png'),
       srcSize: Vector2(32.0, 32.0),
     );
+  }
 
+  createAnimation() {
     _runLeftAnimation = spriteSheet.createAnimation(
         row: 0, stepTime: _animationSpeed, from: 4, to: 7);
     _runRightAnimation = spriteSheet.createAnimation(

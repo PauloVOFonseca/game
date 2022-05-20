@@ -27,12 +27,13 @@ class Player extends SpriteAnimationComponent
   bool _isOnGround = false;
 
   final double _gravity = 10;
-  final double _jumpSpeed = 280;
+  final double _jumpSpeed = 350;
   final double _moveSpeed = 200;
   final double _animationSpeed = 0.15;
   final Vector2 _up = Vector2(0, -1);
   final Vector2 _velocity = Vector2.zero();
 
+  late SpriteSheet spriteSheet;
   late final SpriteAnimation _runLeftAnimation;
   late final SpriteAnimation _runUpAnimation;
   late final SpriteAnimation _runRightAnimation;
@@ -42,21 +43,20 @@ class Player extends SpriteAnimationComponent
   Future<void> onLoad() async {
     super.onLoad();
 
-    _loadAnimations().then((_) => {animation = _standingAnimation});
+    await _loadAnimations()
+        .then((_) => {createAnimation(), animation = _standingAnimation});
     add(CircleHitbox());
     return super.onLoad();
   }
 
   Future<void> _loadAnimations() async {
-    final spriteSheet = SpriteSheet(
+    spriteSheet = SpriteSheet(
       image: await gameRef.images.load('Player.png'),
       srcSize: Vector2(32.0, 32.0),
     );
-
-    createAnimation(spriteSheet);
   }
 
-  createAnimation(SpriteSheet spriteSheet) {
+  createAnimation() {
     _runLeftAnimation = spriteSheet.createAnimation(
         row: 0, stepTime: _animationSpeed, from: 4, to: 8);
     _runRightAnimation = spriteSheet.createAnimation(
