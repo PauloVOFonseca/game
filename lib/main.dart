@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:game/app/home.dart';
+import 'package:game/game/data/db/hive_config.dart';
+import 'package:game/game/data/models/game_model.dart';
+import 'package:game/game/data/models/level_model.dart';
+import 'package:game/screens/home.dart';
+import 'package:hive/hive.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+   Future.delayed(Duration.zero, () async {
+      await HiveConfig.initHive();
+    });
+
+    Hive.registerAdapter(GameModelAdapter());
+    Hive.registerAdapter(LevelModelAdapter());
+
   runApp(const MyApp());
 }
 
