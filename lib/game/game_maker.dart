@@ -1,7 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/flame.dart';
-import 'package:flame/extensions.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:flutter/painting.dart';
 import 'package:game/screens/levels/level_maker.dart';
@@ -13,7 +12,6 @@ class GameMaker extends FlameGame with HasCollisionDetection, HasDraggables {
   late String infoText;
   List<String> dialogsColleted = [];
 
-  late Image spriteSheet;
   late final JoystickComponent joystick;
   int playerScore = 0;
 
@@ -23,8 +21,6 @@ class GameMaker extends FlameGame with HasCollisionDetection, HasDraggables {
     await Flame.device.setLandscape();
 
     joystick = createJoystick();
-
-    spriteSheet = await images.load('tileset.png');
 
     camera.viewport = FixedResolutionViewport(
       Vector2(640, 330),
