@@ -72,13 +72,13 @@ class Dialogs {
     "fourthTip":
         "Este é o sistema digestivo, o sistema completamente responsável pela disgestão dos alimentos consumidos no corpo humano.",
     "mouth":
-        "Os problema da obesidade nesse sistema iniciam desde a boca, visto que é comum que a baixa mastigação é comum para pessoas obesas.",
+        "Os problemas da obesidade nesse sistema iniciam desde a boca, visto que é comum que a baixa mastigação é comum para pessoas obesas.",
     "craving":
         "A baixa mastigação causa a ingestão de pedaços maiores, dificultando a absorção de nutrientes da refeição.",
     "wrongChewing":
         " Pode provocar doenças como gastrites, azia, náuseas, refluxo e úlceras, auxiliando também no ganho de peso.",
     "digestiveSystem":
-        "Este tem relação direta com o estímulo à fome, aumento do apetite e saciedade aliado ao cérebro",
+        "Este sistema tem relação direta com o estímulo à fome, aumento do apetite e saciedade aliado ao cérebro",
     "recommended":
         "Os especialistas recomendam o consumo de  alimentos naturais como grãos integrais, leguminosas, cereais, raízes, frutas, verdura e carnes com baixo teor de gorduras.",
     "notRecommended":
