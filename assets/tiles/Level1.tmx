@@ -104,11 +104,10 @@
   <object id="41" type="combatThis" x="1281.33" y="669.333" width="29.3333" height="29.3333"/>
   <object id="42" type="sedentary" x="2120" y="893.333" width="28" height="26.6667"/>
   <object id="44" type="nutrients" x="2528" y="702.667" width="32" height="30.6667"/>
-  <object id="52" type="vitamins" x="7127.88" y="825.576" width="32" height="33.3333"/>
+  <object id="52" type="vitamins" x="7131.88" y="825.576" width="32" height="33.3333"/>
   <object id="62" type="carbohydrates" x="3744" y="864" width="30.6667" height="30.6667"/>
   <object id="75" type="proteins" x="5218" y="770" width="28" height="28"/>
   <object id="76" type="lipids" x="5758" y="864" width="32" height="34"/>
   <object id="78" type="minerals" x="6496" y="866" width="30" height="28"/>
-  <object id="81" type="Enemy" x="6788" y="828" width="32" height="32"/>
  </objectgroup>
 </map>
