@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:game/screens/game_screen.dart';
 
 class LevelsScreen extends StatelessWidget {
-  final List levels = [1, 2, 3];
+  final List levels = [1, 2, 3, 4];
   LevelsScreen({Key? key}) : super(key: key);
 
   @override

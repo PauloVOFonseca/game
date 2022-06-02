@@ -42,7 +42,7 @@ class Dialogs {
     "metabolicSyndrome":
         "A síndrome metabólica é um conjunto de fatores de riscos manisfestados num indivíduo e está associada a obesidade, identificada pela grande quantidade de gordura abdominal, elevação da taxa de triglicerídeos e glicose, além da pressão alta.",
     "whatAffects":
-        "A obesidade afeta principalmente: o sistema cardiovascular, o sistema respiratório e até mesmo articulações.",
+        "A obesidade afeta principalmente: o sistema cardiovascular, o sistema respiratório, sistema digestivo e até mesmo articulações.",
     "cardiovascularSystem":
         "Como o sistema cardiovascular é afetado: aumento da pressão arterial, entupimento de veias. Dificultando o funcionamento do coração e podendo causar Hipertensão.",
     "respiratorySystem":
@@ -55,7 +55,7 @@ class Dialogs {
         "Cada dieta deve ser adaptada para o estilo de vida pessoal, sob supervisão de um profissional especializado.",
     //Fase 3
     "thirdTip":
-        "Nós estamos no sistema esquelético. Estamos quase acabando nossas operações.",
+        "Este é o sistema esquelético: constituído por ossos, cartilagens, tendões e ligamentos. Colete as informações disponíveis.",
     "adultsIBGE":
         "Em 2020, foi anunciado pelo IBGE que 1 em cada 4 adultos estão obesos(cerca de 25% da população).",
     "childrenIBGE":
@@ -68,5 +68,20 @@ class Dialogs {
         "Segundo registros do IBGE, a pandemia do COVID-19 influenciou no aumento em consequência a restrição da mobilidade, fechamento de parques e academia.",
     "worldDay":
         "11/10 é o Dia Mundial da Obesidade e Dia Nacional de Prevenção da Obesidade.",
+    //Fase 4
+    "fourthTip":
+        "Este é o sistema digestivo, o sistema completamente responsável pela disgestão dos alimentos consumidos no corpo humano.",
+    "mouth":
+        "Os problemas da obesidade nesse sistema iniciam desde a boca, visto que é comum que a baixa mastigação é comum para pessoas obesas.",
+    "craving":
+        "A baixa mastigação causa a ingestão de pedaços maiores, dificultando a absorção de nutrientes da refeição.",
+    "wrongChewing":
+        " Pode provocar doenças como gastrites, azia, náuseas, refluxo e úlceras, auxiliando também no ganho de peso.",
+    "digestiveSystem":
+        "Este sistema tem relação direta com o estímulo à fome, aumento do apetite e saciedade aliado ao cérebro",
+    "recommended":
+        "Os especialistas recomendam o consumo de  alimentos naturais como grãos integrais, leguminosas, cereais, raízes, frutas, verdura e carnes com baixo teor de gorduras.",
+    "notRecommended":
+        "Os especialistas não recomendam o consumo de alimentos industrializados porque são ricos em aditivos químicos, gorduras saturadas, açúcares e pobres em fibras e nutrientes.",
   };
 }
